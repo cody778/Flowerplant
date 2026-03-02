@@ -127,7 +127,267 @@ export default function Index() {
   }
 
   return (
-    <>
+    <div className="app-container">
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          background: linear-gradient(135deg, #e8f5e9 0%, #e0f7fa 100%);
+          color: #1b5e20;
+          line-height: 1.6;
+        }
+
+        .app-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 2rem;
+        }
+
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #2e7d32;
+          margin-bottom: 1.5rem;
+          text-align: center;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #00695c;
+          margin-bottom: 0.75rem;
+        }
+
+        section {
+          margin-bottom: 4rem;
+        }
+
+        /* Hero Section */
+        section:first-child {
+          background: linear-gradient(135deg, #4caf50 0%, #00bcd4 100%);
+          padding: 3rem;
+          border-radius: 24px;
+          box-shadow: 0 8px 32px rgba(46, 125, 50, 0.2);
+          text-align: center;
+          color: white;
+        }
+
+        section:first-child h2 {
+          color: white;
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        section:first-child p {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.95);
+          max-width: 900px;
+          margin: 0 auto 1.5rem;
+          line-height: 1.8;
+        }
+
+        /* Plant Grid */
+        .plants-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+
+        .plant-card {
+          background: white;
+          border-radius: 20px;
+          padding: 2rem;
+          box-shadow: 0 4px 20px rgba(0, 150, 136, 0.15);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 2px solid transparent;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .plant-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: linear-gradient(90deg, #4caf50, #00bcd4, #26a69a);
+          border-radius: 20px 20px 0 0;
+        }
+
+        .plant-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 12px 40px rgba(0, 150, 136, 0.25);
+          border-color: #26a69a;
+        }
+
+        .plant-card h3 {
+          font-size: 1.75rem;
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+          color: #00695c;
+        }
+
+        .plant-card .scientific-name {
+          font-style: italic;
+          color: #00897b;
+          font-size: 0.95rem;
+          margin-bottom: 1.5rem;
+          opacity: 0.9;
+        }
+
+        .plant-info {
+          margin: 0.75rem 0;
+        }
+
+        .plant-info strong {
+          color: #2e7d32;
+          font-weight: 600;
+          display: inline-block;
+          min-width: 140px;
+        }
+
+        .difficulty-badge {
+          display: inline-block;
+          padding: 0.4rem 1rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          margin-top: 0.5rem;
+        }
+
+        .difficulty-badge.beginner {
+          background: #c8e6c9;
+          color: #2e7d32;
+        }
+
+        .difficulty-badge.intermediate {
+          background: #b2ebf2;
+          color: #00695c;
+        }
+
+        .difficulty-badge.expert {
+          background: #ffccbc;
+          color: #d84315;
+        }
+
+        /* Care Basics Cards */
+        .care-basics-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-top: 2rem;
+        }
+
+        .care-card {
+          background: white;
+          border-radius: 20px;
+          padding: 2rem 2.5rem;
+          box-shadow: 0 4px 16px rgba(76, 175, 80, 0.12);
+          border-left: 6px solid #4caf50;
+          transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .care-card:nth-child(2) {
+          border-left-color: #00bcd4;
+        }
+
+        .care-card:nth-child(3) {
+          border-left-color: #26a69a;
+        }
+
+        .care-card:nth-child(4) {
+          border-left-color: #66bb6a;
+        }
+
+        .care-card:nth-child(5) {
+          border-left-color: #00acc1;
+        }
+
+        .care-card:hover {
+          box-shadow: 0 8px 28px rgba(76, 175, 80, 0.2);
+          transform: translateX(8px);
+        }
+
+        .care-card h3 {
+          margin-bottom: 1rem;
+          font-size: 1.6rem;
+        }
+
+        .care-card p {
+          color: #37474f;
+          line-height: 1.8;
+          font-size: 1.05rem;
+        }
+
+        /* Filter Section */
+        section:nth-child(2) {
+          background: white;
+          padding: 2.5rem;
+          border-radius: 24px;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* No Results Message */
+        .no-results {
+          text-align: center;
+          padding: 3rem;
+          background: white;
+          border-radius: 20px;
+          color: #00695c;
+          font-size: 1.2rem;
+          box-shadow: 0 4px 16px rgba(0, 150, 136, 0.1);
+        }
+
+        /* Care Basics Section */
+        section:last-child {
+          background: white;
+          padding: 3rem;
+          border-radius: 24px;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        section:last-child > p {
+          text-align: center;
+          color: #546e7a;
+          font-size: 1.1rem;
+          max-width: 800px;
+          margin: 0 auto 2rem;
+          line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+          .app-container {
+            padding: 1rem;
+          }
+
+          .plants-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          h2 {
+            font-size: 2rem;
+          }
+
+          section:first-child h2 {
+            font-size: 2.2rem;
+          }
+
+          .care-card {
+            padding: 1.5rem;
+          }
+        }
+      `}</style>
+
       <section>
         <h2>Welcome to FlowerPlant</h2>
         <p>
@@ -164,20 +424,34 @@ export default function Index() {
         />
 
         {filteredPlants.length > 0 ? (
-          <div>
+          <div className="plants-grid">
             {filteredPlants.map(plant => (
-              <article key={plant.id}>
+              <article key={plant.id} className="plant-card">
                 <h3>{plant.commonName}</h3>
-                <p><strong>Scientific Name:</strong> {plant.scientificName}</p>
-                <p><strong>Light Needs:</strong> {plant.lightNeeds}</p>
-                <p><strong>Watering Schedule:</strong> {plant.wateringSchedule}</p>
-                <p><strong>Soil Composition:</strong> {plant.soilComposition}</p>
-                <p><strong>Difficulty Level:</strong> {plant.difficultyLevel}</p>
+                <p className="scientific-name">{plant.scientificName}</p>
+                <div className="plant-info">
+                  <strong>Light Needs:</strong> {plant.lightNeeds}
+                </div>
+                <div className="plant-info">
+                  <strong>Watering:</strong> {plant.wateringSchedule}
+                </div>
+                <div className="plant-info">
+                  <strong>Soil:</strong> {plant.soilComposition}
+                </div>
+                <div className="plant-info">
+                  <strong>Type:</strong> {plant.plantType}
+                </div>
+                <div className="plant-info">
+                  <strong>Difficulty:</strong>
+                  <span className={`difficulty-badge ${plant.difficultyLevel.toLowerCase()}`}>
+                    {plant.difficultyLevel}
+                  </span>
+                </div>
               </article>
             ))}
           </div>
         ) : (
-          <p>No matching plant guides found.</p>
+          <p className="no-results">No matching plant guides found.</p>
         )}
       </section>
 
@@ -187,15 +461,15 @@ export default function Index() {
           These principles apply to most indoor plants. Use them together with the specific guides above to
           create a care routine that suits both your plants and your home.
         </p>
-        {generalCareBasics.map((topic, index) => (
-          <article key={index}>
-            <h3>{topic.title}</h3>
-            <p>{topic.content}</p>
-          </article>
-        ))}
+        <div className="care-basics-container">
+          {generalCareBasics.map((topic, index) => (
+            <article key={index} className="care-card">
+              <h3>{topic.title}</h3>
+              <p>{topic.content}</p>
+            </article>
+          ))}
+        </div>
       </section>
-    </>
+    </div>
   )
 }
-
- 
