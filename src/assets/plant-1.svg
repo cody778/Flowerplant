@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="960" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05231E"/>
+      <stop offset="0.55" stop-color="#06453B"/>
+      <stop offset="1" stop-color="#031512"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 150) rotate(130) scale(520 360)">
+      <stop stop-color="#00F5C3" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#00B8D4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leaf1" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00C9A7" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#00B8D4" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="40" fill="url(#bg1)"/>
+  <rect width="960" height="640" rx="40" fill="url(#glow1)"/>
+
+  <g opacity="0.95">
+    <path d="M220 520C190 410 260 300 410 260C450 410 380 540 220 520Z" fill="url(#leaf1)"/>
+    <path d="M420 560C400 440 490 330 640 290C660 450 580 580 420 560Z" fill="url(#leaf1)" opacity="0.85"/>
+    <path d="M590 520C580 410 660 310 790 280C800 420 730 530 590 520Z" fill="url(#leaf1)" opacity="0.75"/>
+  </g>
+
+  <g opacity="0.18" stroke="#D8FCF4" stroke-width="2" stroke-linecap="round">
+    <path d="M245 506C305 450 350 390 402 280"/>
+    <path d="M440 548C505 485 560 420 636 305"/>
+    <path d="M605 508C660 455 715 400 786 295"/>
+  </g>
+</svg>

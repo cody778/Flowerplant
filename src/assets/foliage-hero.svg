@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#062B25"/>
+      <stop offset="0.55" stop-color="#0A3C34"/>
+      <stop offset="1" stop-color="#031A16"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1180 110) rotate(130) scale(820 520)">
+      <stop stop-color="#00F5C3" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#00B8D4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00C9A7" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#00B8D4" stop-opacity="0.18"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="720" fill="url(#bg)"/>
+  <rect width="1600" height="720" fill="url(#glow)"/>
+
+  <!-- blurred foliage blobs -->
+  <g filter="url(#soft)" opacity="0.85">
+    <path d="M-120 560C110 420 260 450 380 520C520 600 640 620 760 600C920 570 1020 480 1140 430C1320 360 1520 390 1760 530L1760 820L-120 820Z" fill="#04201B"/>
+    <path d="M-100 280C60 140 240 110 380 150C540 200 630 220 760 180C910 130 1030 10 1210 -30C1400 -75 1520 10 1700 120L1700 430L-100 430Z" fill="#041E19"/>
+  </g>
+
+  <!-- leaf clusters -->
+  <g opacity="0.9">
+    <path d="M190 560C150 460 195 360 300 320C330 460 285 565 190 560Z" fill="url(#leaf)"/>
+    <path d="M285 612C260 510 320 410 430 380C445 520 390 620 285 612Z" fill="url(#leaf)" opacity="0.85"/>
+    <path d="M1380 590C1320 460 1375 350 1510 300C1540 470 1480 600 1380 590Z" fill="url(#leaf)"/>
+    <path d="M1230 640C1205 520 1280 420 1415 380C1430 540 1345 650 1230 640Z" fill="url(#leaf)" opacity="0.8"/>
+    <path d="M1040 210C1020 130 1075 60 1185 35C1200 140 1140 220 1040 210Z" fill="url(#leaf)" opacity="0.85"/>
+    <path d="M210 170C190 110 235 50 330 25C340 115 295 180 210 170Z" fill="url(#leaf)" opacity="0.75"/>
+  </g>
+
+  <!-- subtle veins -->
+  <g opacity="0.18" stroke="#D8FCF4" stroke-width="2" stroke-linecap="round">
+    <path d="M205 548C245 492 275 440 297 338"/>
+    <path d="M290 602C340 548 382 494 423 398"/>
+    <path d="M1392 580C1445 520 1475 452 1508 310"/>
+    <path d="M1246 630C1300 570 1340 520 1412 388"/>
+    <path d="M1055 200C1110 150 1148 108 1182 45"/>
+    <path d="M222 162C258 128 294 92 326 33"/>
+  </g>
+</svg>

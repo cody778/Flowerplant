@@ -1,8 +1,13 @@
-import '../App.css'
+import '../index.css';
 import Searchfield from '../components/SearchField';
 import FilterField from '../components/filterField';
+import PlantList from '../components/PlantList';
 import { useState } from "react";
-
+import plant1Img from '../images/Plant 1.jpg';
+import plant2Img from '../images/Plant 2.jpg';
+import plant3Img from '../images/Plant 3.jpg';
+import plant4Img from '../images/Plant 4.jpg';
+import heroFoliage from '../images/Background Foliage.jpg';
 
 export default function Index() {
   const [filterText, setFilterText] = useState('');
@@ -22,6 +27,7 @@ export default function Index() {
       difficultyLevel: "Beginner",
       plantType: "Succulent",
       family: "Asparagaceae",
+      imageUrl: plant1Img,
     },
     {
       id: 2,
@@ -33,6 +39,7 @@ export default function Index() {
       difficultyLevel: "Intermediate",
       plantType: "Aroid",
       family: "Araceae",
+      imageUrl: plant2Img,
     },
     {
       id: 3,
@@ -44,6 +51,7 @@ export default function Index() {
       difficultyLevel: "Intermediate",
       plantType: "Flowering foliage",
       family: "Araceae",
+      imageUrl: plant3Img,
     },
     {
       id: 4,
@@ -55,6 +63,7 @@ export default function Index() {
       difficultyLevel: "Beginner",
       plantType: "Vining foliage",
       family: "Araceae",
+      imageUrl: plant4Img,
     }
   ];
 
@@ -127,75 +136,100 @@ export default function Index() {
   }
 
   return (
-    <>
-      <section>
-        <h2>Welcome to FlowerPlant</h2>
-        <p>
-          FlowerPlant is your friendly companion for understanding and caring for your indoor plants. 
-          Use these ready‑made plant guides to learn what each plant needs and to inspire how you care for 
-          your own collection.
-        </p>
-        <p>
-          As a general rule, most houseplants prefer bright, indirect light, evenly moist but well-drained soil, 
-          and good airflow around the leaves. Always check the top of the soil before watering, use pots with 
-          drainage holes, and adjust care based on the season - plants grow faster and drink more in spring and 
-          summer, and slow down in autumn and winter.
-        </p>
-      </section>
+    <div className="index-page">
+      <div className="index-page-inner">
+        <section
+          className="index-hero-band"
+          style={{ '--hero-image': `url(${heroFoliage})` }}
+        >
+          <div className="index-hero-band-inner">
+            <div className="index-hero-card">
+              <h2 className="index-hero-title">
+                Welcome to <span className="index-hero-highlight">FlowerPlant</span>
+              </h2>
+              <p className="index-hero-body">
+                FlowerPlant is your friendly companion for understanding and caring for your indoor plants.
+                Use these ready‑made plant guides to learn what each plant needs and to inspire how you care for
+                your own collection.
+              </p>
+              <p className="index-hero-body-muted">
+                As a general rule, most houseplants prefer bright, indirect light, evenly moist but well-drained soil,
+                and good airflow around the leaves. Always check the top of the soil before watering, use pots with
+                drainage holes, and adjust care based on the season – plants grow faster and drink more in spring and
+                summer, and slow down in autumn and winter.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <section>
-        <Searchfield 
-          filterText={filterText} 
-          onInputChange={handleInputChange}
-        />
-        <FilterField
-          difficultyFilter={difficultyFilter}
-          onDifficultyChange={(e) => setDifficultyFilter(e.target.value)}
-          wateringFilter={wateringFilter}
-          onWateringChange={(e) => setWateringFilter(e.target.value)}
-          soilFilter={soilFilter}
-          onSoilChange={(e) => setSoilFilter(e.target.value)}
-          typeFilter={typeFilter}
-          onTypeChange={(e) => setTypeFilter(e.target.value)}
-          difficultyOptions={difficultyOptions}
-          wateringOptions={wateringOptions}
-          soilOptions={soilOptions}
-          typeOptions={typeOptions}
-        />
+        <section className="index-section">
+          <div className="index-controls-card">
+            <div className="index-controls-header">
+              <div>
+                <h3 className="index-controls-title">Explore plant guides</h3>
+                <p className="index-controls-subtitle">
+                  Search by name and refine by difficulty, watering, soil, and type.
+                </p>
+              </div>
+              <div className="index-pill">
+                {filteredPlants.length} guide{filteredPlants.length === 1 ? '' : 's'} visible
+              </div>
+            </div>
 
-        {filteredPlants.length > 0 ? (
-          <div>
-            {filteredPlants.map(plant => (
-              <article key={plant.id}>
-                <h3>{plant.commonName}</h3>
-                <p><strong>Scientific Name:</strong> {plant.scientificName}</p>
-                <p><strong>Light Needs:</strong> {plant.lightNeeds}</p>
-                <p><strong>Watering Schedule:</strong> {plant.wateringSchedule}</p>
-                <p><strong>Soil Composition:</strong> {plant.soilComposition}</p>
-                <p><strong>Difficulty Level:</strong> {plant.difficultyLevel}</p>
+            <div className="index-controls-fields">
+              <Searchfield
+                filterText={filterText}
+                onInputChange={handleInputChange}
+              />
+              <FilterField
+                difficultyFilter={difficultyFilter}
+                onDifficultyChange={(e) => setDifficultyFilter(e.target.value)}
+                wateringFilter={wateringFilter}
+                onWateringChange={(e) => setWateringFilter(e.target.value)}
+                soilFilter={soilFilter}
+                onSoilChange={(e) => setSoilFilter(e.target.value)}
+                typeFilter={typeFilter}
+                onTypeChange={(e) => setTypeFilter(e.target.value)}
+                difficultyOptions={difficultyOptions}
+                wateringOptions={wateringOptions}
+                soilOptions={soilOptions}
+                typeOptions={typeOptions}
+              />
+            </div>
+          </div>
+
+          {filteredPlants.length > 0 ? (
+            <>
+              <div className="index-plant-header-row">
+                <h2 className="index-plant-section-title">Plant library</h2>
+              </div>
+              <PlantList plants={filteredPlants} showActions={false} />
+            </>
+          ) : (
+            <div className="index-empty-state">
+              No matching plant guides found. Try clearing a few filters or
+              searching by a broader name.
+            </div>
+          )}
+        </section>
+
+        <section className="index-section index-care-section">
+          <h2 className="index-care-title">Plant care basics</h2>
+          <p className="index-care-intro">
+            These principles apply to most indoor plants. Pair them with the plant‑specific
+            guides above to create a care routine that fits both your plants and your home.
+          </p>
+
+          <div className="index-care-stack">
+            {generalCareBasics.map((topic, index) => (
+              <article key={index} className="index-care-card">
+                <div className="index-care-label">{topic.title}</div>
+                <div className="index-care-body">{topic.content}</div>
               </article>
             ))}
           </div>
-        ) : (
-          <p>No matching plant guides found.</p>
-        )}
-      </section>
-
-      <section>
-        <h2>Plant Care Basics</h2>
-        <p>
-          These principles apply to most indoor plants. Use them together with the specific guides above to
-          create a care routine that suits both your plants and your home.
-        </p>
-        {generalCareBasics.map((topic, index) => (
-          <article key={index}>
-            <h3>{topic.title}</h3>
-            <p>{topic.content}</p>
-          </article>
-        ))}
-      </section>
-    </>
+        </section>
+      </div>
+    </div>
   )
 }
-
- 

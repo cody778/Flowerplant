@@ -13,9 +13,10 @@ export default function FilterField({
   typeOptions = [],
 }) {
   return (
-    <div>
+    <div className="filter-field">
       {difficultyOptions.length > 0 && onDifficultyChange && (
         <select
+          className="filter-select"
           value={difficultyFilter}
           onChange={onDifficultyChange}
         >
@@ -28,6 +29,7 @@ export default function FilterField({
 
       {wateringOptions.length > 0 && onWateringChange && (
         <select
+          className="filter-select"
           value={wateringFilter}
           onChange={onWateringChange}
         >
@@ -40,6 +42,7 @@ export default function FilterField({
 
       {soilOptions.length > 0 && onSoilChange && (
         <select
+          className="filter-select"
           value={soilFilter}
           onChange={onSoilChange}
         >
@@ -52,6 +55,7 @@ export default function FilterField({
 
       {typeOptions.length > 0 && onTypeChange && (
         <select
+          className="filter-select"
           value={typeFilter}
           onChange={onTypeChange}
         >
