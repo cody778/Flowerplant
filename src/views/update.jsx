@@ -111,7 +111,7 @@ export default function Update() {
               value={wateringSchedule}
               onChange={(e) => setWateringSchedule(e.target.value)}
             >
-              <option value="Low - every 2–3 weeks">Low - every 2–3 weeks</option>
+              <option value="Low - every 2-3 weeks">Low - every 2-3 weeks</option>
               <option value="Moderate - about once a week">Moderate - about once a week</option>
               <option value="High - keep soil evenly moist">High - keep soil evenly moist</option>
             </select>

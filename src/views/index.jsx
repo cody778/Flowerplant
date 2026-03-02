@@ -149,13 +149,13 @@ export default function Index() {
               </h2>
               <p className="index-hero-body">
                 FlowerPlant is your friendly companion for understanding and caring for your indoor plants.
-                Use these ready‑made plant guides to learn what each plant needs and to inspire how you care for
+                Use these ready-made plant guides to learn what each plant needs and to inspire how you care for
                 your own collection.
               </p>
               <p className="index-hero-body-muted">
                 As a general rule, most houseplants prefer bright, indirect light, evenly moist but well-drained soil,
                 and good airflow around the leaves. Always check the top of the soil before watering, use pots with
-                drainage holes, and adjust care based on the season – plants grow faster and drink more in spring and
+                drainage holes, and adjust care based on the season - plants grow faster and drink more in spring and
                 summer, and slow down in autumn and winter.
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function Index() {
         <section className="index-section index-care-section">
           <h2 className="index-care-title">Plant care basics</h2>
           <p className="index-care-intro">
-            These principles apply to most indoor plants. Pair them with the plant‑specific
+            These principles apply to most indoor plants. Pair them with the plant-specific
             guides above to create a care routine that fits both your plants and your home.
           </p>
 
